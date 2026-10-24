@@ -104,7 +104,7 @@ export default function IllustrationPromptPage() {
     <aside className="sidebar">
       <Link className="brand" href="/" aria-label="回 Design Archive 首頁"><span className="brand-logo">D<span>.</span></span><span>DESIGN<br/>ARCHIVE</span></Link>
       <div className="sidebar-group"><span className="sidebar-label">YOUR LIBRARY</span><Link href="/" className="side-link"><Layers3 size={18}/> 前端設計收藏</Link><Link href="/prompts/" className="side-link current" aria-current="page"><BookImage size={18}/> 繪圖 Prompt <span className="side-count">{personal.length}</span></Link></div>
-      <div className="sidebar-footer"><div className="tiny-square">02</div><p>Keep the prompt.<br/>Keep the look.</p><small>LOCAL-FIRST · v0.3</small></div>
+      
     </aside>
     <main className="main-content ill-content">
       <div className="topbar"><Link className="ill-back" href="/"><ArrowLeft size={16}/> 返回設計收藏</Link><span className="topbar-status"><span className="status-dot"/> LOCAL-ONLY DATA</span></div>
