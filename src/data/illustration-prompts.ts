@@ -14,6 +14,9 @@ export type IllustrationPromptEntry = {
   aspectRatio: string;
   notes: string;
   imageDataUrl: string;
+  imageFullUrl?: string;
+  imageOriginalDimensions?: string;
+  previewQualityNote?: string;
   preview: IllustrationPreview;
   sourceUrl: string;
   createdAt: string;
