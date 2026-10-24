@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Archive, ArrowLeft, ArrowRight, Check, ClipboardCopy, Download, ExternalLink, Layers3, Palette, Plus, Search, Trash2, Upload, X, Sparkles } from "lucide-react";
+import { Archive, ArrowLeft, ArrowRight, BookImage, Check, ClipboardCopy, Download, ExternalLink, Layers3, Palette, Plus, Search, Trash2, Upload, X, Sparkles } from "lucide-react";
+import Link from "next/link";
 import { curatedStyles, getStylePrompt, type StyleEntry } from "@/data/styles";
 import { Style001ComponentBoard, Style001VariationStudio } from "@/components/style001/Style001Board";
 import { Style001Cover } from "@/components/style001/Style001Cover";
@@ -124,6 +125,7 @@ export default function Home() {
         <button className={`side-link ${tab==="components"?"current":""}`} onClick={()=>{setTab("components");goBack();}}><Layers3 size={18}/> 元件索引</button>
         <button className={`side-link ${tab==="variation"?"current":""}`} onClick={()=>{setTab("variation");goBack();}}><Sparkles size={18}/> AI 變體工作室</button>
         <button className={`side-link ${tab==="palettes"?"current":""}`} onClick={()=>{setTab("palettes");goBack();}}><Palette size={18}/> 配色資料</button>
+        <Link className="side-link" href="/prompts/"><BookImage size={18}/> AI 繪圖 Prompt</Link>
       </div>
       <div className="sidebar-footer"><div className="tiny-square">01</div><p>Observe carefully.<br/>Recreate originally.</p><small>LOCAL-FIRST · v0.2</small></div>
     </aside>
@@ -134,6 +136,7 @@ export default function Home() {
         <button className={tab==="components"?"active":""} onClick={()=>{setTab("components");goBack();}}>元件索引</button>
         <button className={tab==="variation"?"active":""} onClick={()=>{setTab("variation");goBack();}}>AI 變體</button>
         <button className={tab==="palettes"?"active":""} onClick={()=>{setTab("palettes");goBack();}}>配色資料</button>
+        <Link className="mobile-prompt-link" href="/prompts/">繪圖 Prompt</Link>
       </nav>
       {detail ? <section className="detail-view">
         <button className="back-link" onClick={goBack}><ArrowLeft size={17}/> 返回所有收藏</button>
