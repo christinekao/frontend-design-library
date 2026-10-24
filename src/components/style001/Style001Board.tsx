@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { ArrowRight, Check, Clipboard, Compass, Download, ExternalLink, Layers, Lightbulb, Sparkles } from "lucide-react";
-import { makeStyle001Prompt, PHASE_VIEWS, PREVIEW_VARIANTS, STYLE001_COMPONENTS, type PreviewVariant } from "@/data/style001-variants";
+import { makeStyle001Prompt, makeStyle001ComponentPrompt, PHASE_VIEWS, PREVIEW_VARIANTS, STYLE001_COMPONENTS, type PreviewVariant } from "@/data/style001-variants";
 
 export type StudioMode = "components" | "variation";
 
@@ -47,7 +47,7 @@ function ComponentSketch({ id, v }: { id: string; v: PreviewVariant }) {
   }
 }
 
-export function Style001ComponentBoard({ initialActive = null }: { initialActive?: string | null }) {
+export function Style001ComponentBoard({ initialActive = null, onCopy }: { initialActive?: string | null; onCopy: (text: string) => void }) {
   const v = PREVIEW_VARIANTS[0];
   const [active, setActive] = useState<string | null>(initialActive);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
@@ -64,9 +64,18 @@ export function Style001ComponentBoard({ initialActive = null }: { initialActive
         event.preventDefault();
         setActive(null);
       } else if (event.key === "Tab") {
-        // This read-only modal has one focusable control: Close.
-        event.preventDefault();
-        closeButtonRef.current?.focus();
+        // Keep focus in the dialog while allowing its copy actions and summaries.
+        const dialog = document.querySelector(".s001-spec-panel");
+        const controls = Array.from(dialog?.querySelectorAll<HTMLElement>('button:not([disabled]), summary') || []);
+        if (!controls.length) return;
+        const first = controls[0], last = controls[controls.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
       }
     };
     window.addEventListener("keydown", onKeyDown);
@@ -77,8 +86,8 @@ export function Style001ComponentBoard({ initialActive = null }: { initialActive
     };
   }, [active]);
   return <div className="s001-section">
-    <div className="s001-section-title"><div><span className="s001-overline">DRAWN & REUSABLE · 9 PIECES</span><h2>Component Board</h2><p>不是只列元件名稱，而是以可編輯的 HTML／SVG／CSS 繪製九個元件；畫面內容已改為學習計畫。</p></div><span className="s001-compact-tag">STYLE-001 / COMPONENTS</span></div>
-    <div className="s001-board">{STYLE001_COMPONENTS.map(c => <button type="button" className={`s001-board-card ${active === c.id ? "focus" : ""}`} key={c.id} onClick={() => setActive(c.id)} aria-haspopup="dialog" aria-expanded={active === c.id}><div className="s001-card-heading"><span>{c.id}</span><span>點擊規格 <ArrowRight size={13}/></span></div><div className="s001-sketch"><ComponentSketch id={c.id} v={v}/></div><div className="s001-card-info"><strong>{c.name}</strong><small>{c.title}</small></div></button>)}</div>
+    <div className="s001-section-title"><div><span className="s001-overline">DRAWN & REUSABLE · 9 PIECES</span><h2>Component Board</h2><p>不是只列元件名稱，而是以可編輯的 HTML／SVG／CSS 繪製九個元件；畫面內容已改為學習計畫。點擊元件可以查看規格，並複製單一元件的前端或繪圖 Prompt。</p></div><span className="s001-compact-tag">STYLE-001 / COMPONENTS</span></div>
+    <div className="s001-board">{STYLE001_COMPONENTS.map(c => <button type="button" className={`s001-board-card ${active === c.id ? "focus" : ""}`} key={c.id} onClick={() => setActive(c.id)} aria-haspopup="dialog" aria-expanded={active === c.id}><div className="s001-card-heading"><span>{c.id}</span><span>查看規格與 Prompt <ArrowRight size={13}/></span></div><div className="s001-sketch"><ComponentSketch id={c.id} v={v}/></div><div className="s001-card-info"><strong>{c.name}</strong><small>{c.title}</small></div></button>)}</div>
     {chosen && <div className="s001-spec-overlay">
       <button type="button" className="s001-spec-shade" aria-label="關閉元件規格" onClick={() => setActive(null)}/>
       <section className="s001-spec s001-spec-panel" role="dialog" aria-modal="true" aria-labelledby="s001-spec-title" aria-describedby="s001-spec-description">
@@ -86,6 +95,22 @@ export function Style001ComponentBoard({ initialActive = null }: { initialActive
         <p className="s001-spec-intro" id="s001-spec-description">{chosen.title} · 以全新學習內容繪製的元件示例。</p>
         <div className="s001-spec-preview"><ComponentSketch id={chosen.id} v={v}/></div>
         <div className="s001-spec-grid"><p><b>元件結構</b>{chosen.anatomy}</p><p><b>互動與狀態</b>{chosen.states}</p><p><b>可替換內容</b>{chosen.flexible}</p><p><b>設計規則</b>{chosen.rule}</p></div>
+        <div className="s001-component-prompts">
+          <span className="s001-overline">PROMPTS / 直接套用到自己的專案</span>
+          <p>針對 <strong>{chosen.name}</strong> 的獨立提示詞；使用新的主題與內容，不複製來源作品。</p>
+          <div className="s001-prompt-actions">
+            <button type="button" onClick={() => onCopy(makeStyle001ComponentPrompt(chosen.id, "frontend"))}><Clipboard size={15}/> 複製前端實作 Prompt</button>
+            <button type="button" onClick={() => onCopy(makeStyle001ComponentPrompt(chosen.id, "visual"))}><Clipboard size={15}/> 複製元件繪圖 Prompt</button>
+          </div>
+          <details className="s001-prompt-detail">
+            <summary>查看前端實作 Prompt</summary>
+            <pre>{makeStyle001ComponentPrompt(chosen.id, "frontend")}</pre>
+          </details>
+          <details className="s001-prompt-detail">
+            <summary>查看元件繪圖 Prompt</summary>
+            <pre>{makeStyle001ComponentPrompt(chosen.id, "visual")}</pre>
+          </details>
+        </div>
       </section>
     </div>}
     <p className="s001-fineprint">這些是重新實作的可操作元件示意，並非將其他設計者的圖像切成素材或照抄原站程式碼。</p>
