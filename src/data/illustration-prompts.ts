@@ -47,6 +47,6 @@ export const ILLUSTRATION_EXAMPLES: IllustrationPromptEntry[] = [
   }
 ];
 export function nextDrawingId(entries: IllustrationPromptEntry[]): string {
-  const n = Math.max(0, ...entries.map(x => Number(x.id.match(/^DRAW-(\\d+)$/)?.[1] || 0)));
+  const n = Math.max(0, ...entries.map(x => Number(x.id.match(/^DRAW-(\d+)$/)?.[1] || 0)));
   return `DRAW-${String(n + 1).padStart(3, "0")}`;
 }
