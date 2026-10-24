@@ -1,0 +1,28 @@
+{
+  "version": 2,
+  "schema": "design-archive-index",
+  "items": [
+    {
+      "id": "STYLE-001",
+      "title": "Pastel Cartoon Travel Planner",
+      "category": "Playful",
+      "tags": [
+        "Pastel",
+        "Playful",
+        "Illustrated",
+        "Timeline",
+        "Travel",
+        "Mobile-first"
+      ],
+      "directory": "styles/STYLE-001",
+      "confirmedFavoriteElements": [],
+      "sourceVerified": false,
+      "createdAt": "2026-10-24",
+      "assetType": "screenshots_from_user",
+      "referenceUrlOrigin": "visible_in_screenshot_unverified",
+      "masterPrompt": "styles/STYLE-001/MASTER_AI_PROMPT.md",
+      "componentBoard": "styles/STYLE-001/COMPONENT_BOARD.md",
+      "variantMapping": "styles/STYLE-001/CONTENT_TRANSFORMATION.md"
+    }
+  ]
+}
