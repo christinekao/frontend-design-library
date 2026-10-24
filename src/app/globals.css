@@ -39,3 +39,7 @@ footer{border-top:1px solid var(--line);display:flex;align-items:center;justify-
 .component-list>button.component-jump svg{transition:transform .15s ease}
 .component-list>button.component-jump:hover svg{transform:translateX(4px)}
 @media(prefers-reduced-motion:reduce){.component-list>button.component-jump,.component-list>button.component-jump svg{transition:none}}
+
+/* Prompt Library navigation is an active route rather than a home-page tab. */
+.mobile-tabs .mobile-prompt-link{white-space:nowrap;display:inline-flex;align-items:center;color:#718374;padding:13px 11px;font-size:12px;text-decoration:none;border-bottom:2px solid transparent}
+.mobile-tabs .mobile-prompt-link:hover{color:#263a2d;border-bottom-color:#b36e52}
