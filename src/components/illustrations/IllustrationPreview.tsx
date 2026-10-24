@@ -6,6 +6,63 @@ import type { IllustrationPreview as PreviewKey } from "@/data/illustration-prom
 export function IllustrationPreview({ type, image, title }: { type: PreviewKey; image?: string; title: string }) {
   if (image) return <img className="ill-preview-image" src={image} alt={`${title}：使用者儲存的圖片成品`} />;
   if (type === "uploaded") return <div className="ill-preview-missing"><span>＋</span> 尚未上傳繪圖成果</div>;
+  if (type === "white-doodle") return <svg className="ill-preview-art" viewBox="0 0 420 320" role="img" aria-label="白色細線手繪疊加效果示意：暖色咖啡桌、白色蒸氣、愛心、箭頭和手寫短句">
+    <defs>
+      <linearGradient id="d004-wall" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#CFC3A8"/><stop offset=".5" stopColor="#A78E72"/><stop offset="1" stopColor="#725D4E"/></linearGradient>
+      <linearGradient id="d004-light" x1="0" y1="0" x2=".9" y2="1"><stop stopColor="#FFE8BD" stopOpacity=".75"/><stop offset="1" stopColor="#F2E4CF" stopOpacity=".04"/></linearGradient>
+      <linearGradient id="d004-table" x1="0" y1="0" x2="0" y2="1"><stop stopColor="#B99169"/><stop offset="1" stopColor="#694833"/></linearGradient>
+      <radialGradient id="d004-coffee"><stop stopColor="#52301F"/><stop offset=".65" stopColor="#6D3C26"/><stop offset="1" stopColor="#B78760"/></radialGradient>
+      <filter id="d004-soft"><feGaussianBlur stdDeviation="5"/></filter>
+      <filter id="d004-smaller"><feGaussianBlur stdDeviation="2"/></filter>
+    </defs>
+    <rect width="420" height="320" rx="18" fill="url(#d004-wall)"/>
+    <path d="M15 0h184v186H15Z" fill="#604F40" opacity=".55"/>
+    <path d="M25 0h153v170H25Z" fill="#A4B4A2" opacity=".85"/>
+    <path d="M25 5h153v145H25Z" fill="#B8B9A1"/>
+    <path d="M25 12h153v140H25Z" fill="url(#d004-light)"/>
+    <path d="M73 0v166M25 92h153" stroke="#5C4F42" strokeWidth="10" opacity=".74"/>
+    <g filter="url(#d004-soft)" opacity=".75"><circle cx="55" cy="25" r="22" fill="#E9D4AC"/><circle cx="125" cy="46" r="18" fill="#8D9A70"/><circle cx="168" cy="139" r="17" fill="#E8CB8E"/><circle cx="366" cy="55" r="42" fill="#F9D7A6"/><circle cx="302" cy="60" r="18" fill="#6F8055"/><circle cx="215" cy="99" r="13" fill="#DBA977"/></g>
+    <path d="M0 198 420 151v169H0Z" fill="url(#d004-table)"/>
+    <path d="M0 217 420 161" stroke="#E6C79E" strokeWidth="4" opacity=".35"/>
+    <path d="M0 264 420 211" stroke="#C3946B" strokeWidth="3" opacity=".35"/>
+    <path d="M231 196 345 169 402 237 274 276Z" fill="#E2CBAB" opacity=".95"/>
+    <path d="M237 196 299 182 338 196 275 211Z" fill="#F9EFDC" />
+    <path d="M276 211 338 196 393 236 330 252Z" fill="#ECE4D2"/>
+    <path d="M276 213 277 261" stroke="#987E68" strokeWidth="2"/>
+    <path d="M289 224 339 212M294 233 348 221M299 243 356 230" stroke="#8A7D68" strokeWidth="1.3" opacity=".5"/>
+    <ellipse cx="185" cy="253" rx="81" ry="26" fill="#442D1D" opacity=".28" filter="url(#d004-smaller)"/>
+    <ellipse cx="185" cy="248" rx="76" ry="20" fill="#EAD8B9"/>
+    <ellipse cx="185" cy="246" rx="59" ry="14" fill="#C7A886"/>
+    <path d="M139 177h92v69c0 24-92 24-92 0Z" fill="#D6C2A1" stroke="#8F795D" strokeWidth="3"/>
+    <path d="M229 192c48-19 43 42 2 35" fill="none" stroke="#D6C2A1" strokeWidth="14"/>
+    <path d="M229 192c48-19 43 42 2 35" fill="none" stroke="#8F795D" strokeWidth="3"/>
+    <ellipse cx="185" cy="179" rx="46" ry="14" fill="#EFDBB9" stroke="#876D57" strokeWidth="3"/>
+    <ellipse cx="185" cy="179" rx="36" ry="9" fill="url(#d004-coffee)"/>
+    <path d="M298 145c6-32-1-45-6-48M310 150c-7-26-3-44 5-53M321 148c12-24 26-31 32-35" stroke="#4D6144" strokeWidth="5" fill="none"/>
+    <ellipse cx="286" cy="108" rx="14" ry="26" transform="rotate(-28 286 108)" fill="#5B704B"/>
+    <ellipse cx="318" cy="106" rx="11" ry="23" transform="rotate(28 318 106)" fill="#708453"/>
+    <ellipse cx="335" cy="129" rx="15" ry="23" transform="rotate(66 335 129)" fill="#4F6C4B"/>
+    <path d="M277 145h71l-8 46h-56Z" fill="#9C6D57"/>
+    <path d="M278 145h69l-4 10h-61Z" fill="#B68D70"/>
+    <path d="M312 108c5-9 12-14 20-12l3 11-11 9z" fill="#E8D9BD"/>
+    <circle cx="335" cy="95" r="9" fill="#EFE3CB"/><circle cx="342" cy="100" r="7" fill="#F3E8D6"/>
+    <path d="M26 223 88 206 114 281 44 301Z" fill="#E9D9BC" opacity=".9"/>
+    <path d="M45 250 90 239M47 262l35-9M53 275l39-10" stroke="#7E6750" strokeWidth="2" opacity=".45"/>
+    <g stroke="#FFFCF6" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round" fill="none">
+      <path d="M145 178c16-15 66-15 83-1M134 190c-1 23 0 47 8 57M145 258c23 11 62 11 83-2M240 214c21-2 27-22 16-28"/>
+      <path d="M166 153c-13-14 14-24 3-39M190 154c-13-18 14-24 5-43M214 153c-13-15 13-24 6-41"/>
+      <path d="M110 118c-10 3-17 12-19 24M89 133l2 11 10-4"/>
+      <path d="M334 209c7-3 18-1 22 7-11 4-21 12-28 19M333 233l-7 3 0-8"/>
+      <path d="M265 38l5 11 11 3-10 5-5 12-5-12-11-5 11-3z"/>
+      <path d="M372 91l3 7 8 3-8 3-3 8-3-8-8-3 8-3z"/>
+      <path d="M77 176c-13-17-20 4-4 13 12-10 1-25-8-15"/>
+      <path d="M341 261c-10-12-17 0-8 9 12 10 20-12 9-12-2 0-4 1-5 4z"/>
+      <path d="M298 261c2 7 12 7 13 0M298 255h1M310 255h1"/>
+    </g>
+    <g fill="#FFF9F0" fontFamily="'Comic Sans MS','Bradley Hand',cursive" fontSize="18" transform="rotate(-7 70 55)"><text x="33" y="54">slow</text><text x="30" y="75">morning ♡</text></g>
+    <g fill="#FFFAF3" fontFamily="'Comic Sans MS','Bradley Hand',cursive" fontSize="15" transform="rotate(7 332 53)"><text x="326" y="56">little</text><text x="323" y="75">joys</text></g>
+    <g stroke="#FFFDF7" strokeWidth="1.4" strokeDasharray="2 5" fill="none" opacity=".94"><path d="M38 151q36 25 73 6"/><path d="M261 294q28 6 58-13"/></g>
+  </svg>;
   if (type === "pastel-cat") return <svg className="ill-preview-art" viewBox="0 0 420 320" role="img" aria-label="原創插畫示意：奶油色小貓在陽光下讀書，深灰描邊與柔和粉彩">
     <rect width="420" height="320" rx="22" fill="#FBF9F1"/>
     <rect x="270" y="34" width="105" height="133" rx="38" fill="#B9D8E9" stroke="#363233" strokeWidth="4"/>
