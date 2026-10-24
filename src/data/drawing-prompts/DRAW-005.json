@@ -1,0 +1,29 @@
+{
+  "id": "DRAW-005",
+  "title": "童趣民俗平面插畫・手繪塗鴉",
+  "description": "將整張圖片重繪成色彩鮮明、具手作不完美感的 Decorative Folk Flat Illustration，加入輕巧 Doodle 裝飾。",
+  "prompt": "Please transform the entire image into a single Decorative Folk Flat Illustration with Doodle elements. Use a bold and playful color palette, completely different from the original image. Simplify all details into clean, flat shapes with a handmade, slightly imperfect feel, as if drawn on a sheet of white paper. The overall style should look cute, childlike, and whimsical",
+  "negativePrompt": "",
+  "tags": [
+    "Decorative Folk",
+    "Flat Illustration",
+    "Doodle",
+    "Whimsical",
+    "Childlike",
+    "Handmade"
+  ],
+  "model": "未指定（原 Prompt 未提供）",
+  "aspectRatio": "1:1（本次範例）",
+  "notes": "此筆使用者提供英文 Prompt 原文，搭配先前本對話生成的範例圖片。圖片內容為窗邊咖啡桌、盆栽、筆記本與糕點的童趣民俗平面插畫。原 Prompt 未指定模型。",
+  "imageDataUrl": "https://christinekao.github.io/frontend-design-library/assets/DRAW-005-example.webp",
+  "preview": "uploaded",
+  "sourceUrl": "",
+  "createdAt": "2026-10-24",
+  "origin": "example",
+  "previewKind": "ai-generated-example",
+  "provenance": {
+    "prompt": "user-verbatim",
+    "preview": "assistant-generated",
+    "sourceLink": "not-provided"
+  }
+}
