@@ -98,7 +98,7 @@ export default function IllustrationPromptPage() {
     setPersonal(previous=>[...previous.filter(x=>!imported.some(y=>y.id===x.id)),...imported]);
     setNotice(`已匯入 ${imported.length} 筆 Prompt`);
   }catch(e){setNotice(e instanceof Error?e.message:"匯入失敗");} if(importInput.current) importInput.current.value="";}
-  const previewLabel=(entry:IllustrationPromptEntry)=>entry.imageDataUrl?(entry.origin==="example"?"AI 生成圖片・GitHub 已儲存預覽縮圖":"使用者自行上傳的圖片"):"原創 SVG 畫風示意 · 非 AI 生成成品";
+  const previewLabel=(entry:IllustrationPromptEntry)=>entry.imageFullUrl?`AI 生成圖片 · 高畫質版本（${entry.imageOriginalDimensions || "原始解析度"}）`:entry.imageDataUrl?(entry.origin==="example"?"AI 生成圖片 · 預覽縮圖":"使用者自行上傳的圖片"):"原創 SVG 畫風示意 · 非 AI 生成成品";
 
   return <div className="app-shell ill-shell">
     <aside className="sidebar">
@@ -112,7 +112,15 @@ export default function IllustrationPromptPage() {
         <div className="ill-detail-toolbar"><button className="ill-btn" onClick={()=>setSelected(null)}><ArrowLeft size={16}/> 返回 Prompt 收藏</button><div className="ill-buttons"><button className="ill-btn" onClick={()=>void copy(current.prompt)}><Clipboard size={15}/> 複製 Prompt</button><button className="ill-btn" onClick={()=>startNew(current)}><FilePlus2 size={15}/> {current.origin==="example"?"收藏此範例":"編輯紀錄"}</button>{current.origin==="local"&&<button className="ill-btn" onClick={()=>remove(current)}><Trash2 size={15}/> 刪除</button>}</div></div>
         <div className="ill-detail-title"><span className="eyebrow">{current.id} / DRAWING PROMPT RECORD</span><h1>{current.title}</h1><p>{current.description}</p></div>
         <div className="ill-detail-layout"><div>
-          <div className="ill-detail-preview"><IllustrationPreview type={current.preview} image={current.imageDataUrl} title={current.title}/><div className="ill-preview-under"><span>{previewLabel(current)}</span><span>{current.aspectRatio}</span></div></div>
+          <div className="ill-detail-preview">
+            <div className={`ill-detail-image-stage ${current.id==="DRAW-004"?"ill-native-small":""}`}>
+              <IllustrationPreview type={current.preview} image={current.imageFullUrl || current.imageDataUrl} title={current.title}/>
+            </div>
+            <div className="ill-preview-under">
+              <span>{previewLabel(current)}</span>
+              {current.imageFullUrl ? <a className="ill-original-link" href={current.imageFullUrl} target="_blank" rel="noopener noreferrer">開啟高畫質原圖 ↗</a> : <span>{current.aspectRatio}</span>}
+            </div>
+          </div>
           <div className="ill-sheet" style={{marginTop:17}}><span className="section-kicker">VISUAL STYLE / 畫風索引</span><h2>畫風標籤</h2><div className="ill-tags">{current.tags.map(tag=><span key={tag}>{tag}</span>)}</div><div className="ill-keyline"/><div className="ill-props"><div><b>生成模型</b>{current.model||"未指定"}</div><div><b>畫面比例</b>{current.aspectRatio}</div></div>{current.sourceUrl&&<p>參考連結：<a href={current.sourceUrl} target="_blank" rel="noopener noreferrer">{current.sourceUrl}</a></p>}</div>
         </div><div>
           {(current.id==="DRAW-004" || current.id==="DRAW-005")&&<div className="ill-alert" style={{marginBottom:17,display:"flex",gap:12,alignItems:"center",justifyContent:"space-between",flexWrap:"wrap"}}>
