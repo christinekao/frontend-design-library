@@ -1,5 +1,7 @@
+import draw004 from "./drawing-prompts/DRAW-004.json";
+
 /** Prompt-collection records. Starter previews are original SVG examples, NOT AI generated images. */
-export type IllustrationPreview = "pastel-cat" | "paper-cafe" | "isometric-desk" | "uploaded";
+export type IllustrationPreview = "pastel-cat" | "paper-cafe" | "isometric-desk" | "white-doodle" | "uploaded";
 export type IllustrationPromptEntry = {
   id: string;
   title: string;
@@ -44,7 +46,8 @@ export const ILLUSTRATION_EXAMPLES: IllustrationPromptEntry[] = [
     negativePrompt: "Hyperrealistic interiors, cyberpunk neon, glossy chrome, harsh reflections, clutter, logos, text, people.",
     tags: ["Isometric", "Soft 3D", "Clay", "Pastel"], model: "模型不限（提示詞範例）", aspectRatio: "1:1",
     notes: "SVG 模擬等角造型供辨識畫風；實際 3D 成品需另用繪圖模型產生。", imageDataUrl: "", preview: "isometric-desk", sourceUrl: "", createdAt: "2026-10-24", origin: "example"
-  }
+  },
+  { ...draw004, preview: "white-doodle", origin: "example" }
 ];
 export function nextDrawingId(entries: IllustrationPromptEntry[]): string {
   const n = Math.max(0, ...entries.map(x => Number(x.id.match(/^DRAW-(\d+)$/)?.[1] || 0)));
