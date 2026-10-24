@@ -26,5 +26,8 @@
     "prompt": "user-verbatim",
     "preview": "assistant-generated",
     "sourceLink": "not-provided"
-  }
+  },
+  "imageFullUrl": "https://christinekao.github.io/frontend-design-library/assets/DRAW-004-highres.webp",
+  "imageOriginalDimensions": "612 × 703",
+  "previewQualityNote": "收藏列表使用輕量縮圖，詳情頁顯示原生解析度高畫質版本，不拉伸填滿固定比例。"
 }
