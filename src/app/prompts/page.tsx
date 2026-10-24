@@ -115,6 +115,10 @@ export default function IllustrationPromptPage() {
           <div className="ill-detail-preview"><IllustrationPreview type={current.preview} image={current.imageDataUrl} title={current.title}/><div className="ill-preview-under"><span>{previewLabel(current)}</span><span>{current.aspectRatio}</span></div></div>
           <div className="ill-sheet" style={{marginTop:17}}><span className="section-kicker">VISUAL STYLE / 畫風索引</span><h2>畫風標籤</h2><div className="ill-tags">{current.tags.map(tag=><span key={tag}>{tag}</span>)}</div><div className="ill-keyline"/><div className="ill-props"><div><b>生成模型</b>{current.model||"未指定"}</div><div><b>畫面比例</b>{current.aspectRatio}</div></div>{current.sourceUrl&&<p>參考連結：<a href={current.sourceUrl} target="_blank" rel="noopener noreferrer">{current.sourceUrl}</a></p>}</div>
         </div><div>
+          {current.id==="DRAW-004"&&<div className="ill-alert" style={{marginBottom:17,display:"flex",gap:12,alignItems:"center",justifyContent:"space-between",flexWrap:"wrap"}}>
+            <span>原始 Prompt 已版本化保存在 GitHub JSON，網站會從同一份資料讀取。</span>
+            <a className="ill-btn" href="https://github.com/christinekao/frontend-design-library/blob/main/src/data/drawing-prompts/DRAW-004.json" target="_blank" rel="noreferrer noopener">查看 JSON 原始資料 ↗</a>
+          </div>}
           <div className="ill-sheet"><div className="ill-sheet-header"><span className="section-kicker">MAIN PROMPT</span><button className="ill-btn" onClick={()=>void copy(current.prompt)}><Clipboard size={15}/> 複製</button></div><h2>繪圖提示詞</h2><pre>{current.prompt}</pre><span className="section-kicker">NEGATIVE PROMPT</span><pre>{current.negativePrompt||"未提供"}</pre></div>
           <div className="ill-sheet"><span className="section-kicker">NOTES / 使用心得</span><h2>收藏筆記</h2><p>{current.notes||"尚未補充使用心得或模型參數。"}</p></div>
           {current.origin==="example"&&<div className="ill-alert">這是用來示範 Prompt 如何配對畫風圖片的預設案例。示意插畫為程式繪製的 SVG，不是已執行繪圖模型所產生的結果。你可以按「收藏此範例」，上傳自己的生成圖片並保留對應 Prompt。</div>}
