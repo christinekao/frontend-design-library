@@ -1,0 +1,30 @@
+{
+  "id": "DRAW-004",
+  "title": "白色手繪疊加・日記感塗鴉風",
+  "description": "在原始圖片上，以細緻的白色手繪線條、手寫短句與少量裝飾創造隨性、時髦的日記感。",
+  "prompt": "在圖片上方加上一層手繪疊加。最終成品要時髦、放鬆、毫不費力地隨性。繪製規則：用細細的手繪線條，像是用白色筆畫上去。保持單筆勾勒風格：粗糙、略帶不均。沿著物件外緣加上描邊。可用箭頭或虛線引導視線。文字規則：使用手寫字。保持簡短，像輕鬆的內心獨白。語氣：像日記、簡短、以情緒為主。旁白要正面又甜甜的。裝飾：適度加入蒸氣、閃光、愛心、小小表情臉。不要太滿；留一些「留白」。",
+  "negativePrompt": "",
+  "tags": [
+    "White Doodle",
+    "Hand-drawn Overlay",
+    "Diary Aesthetic",
+    "Handwritten",
+    "Editorial",
+    "Casual Cute"
+  ],
+  "model": "未指定（原 Prompt 未提供）",
+  "aspectRatio": "依來源圖片",
+  "notes": "使用者原文逐字保存，未提供負面提示詞、來源網址或指定模型。網站內為新創作的畫風示意；不是使用者提供的原始照片，也不是原始圖片的編輯成果。生成示例為咖啡桌與白色塗鴉，非來源照片。",
+  "imageDataUrl": "",
+  "preview": "white-doodle",
+  "sourceUrl": "",
+  "createdAt": "2026-10-24",
+  "origin": "example",
+  "previewKind": "original-drawing",
+  "visualNotes": "繪圖效果示意：暖色生活影像上疊白色不規則輪廓、蒸氣、星光、愛心及短篇手寫旁白。留白是核心規則。",
+  "provenance": {
+    "prompt": "user-verbatim",
+    "preview": "assistant-created-demo",
+    "sourceLink": "not-provided"
+  }
+}
