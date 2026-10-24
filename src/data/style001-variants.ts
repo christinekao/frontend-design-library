@@ -95,6 +95,63 @@ export const STYLE001_COMPONENTS = [
   { id: "C09", name: "CountdownBadge", title: "輔助提示徽章", anatomy: "暖黃色膠囊／短標籤／數字", states: "倒數、完成數、當前階段", flexible: "倒數日、學習進度、習慣連續天數", rule: "只強調一個輕量數值，不應成為主要資訊容器" }
 ] as const;
 
+
+/**
+ * Component-level prompts are independent from the page-wide master prompt.
+ * They translate an observed design language into NEW functional content.
+ * The "visual" variant describes a static component concept, not a pixel copy.
+ */
+const COMPONENT_CONTENT_EXAMPLES: Record<string, {subject:string; data:string; behavior:string; composition:string}> = {
+  C01: {subject:"閱讀挑戰首頁",data:"主標題「閱讀 30 天」；副標「每天讀一點」；暖黃倒數徽章；書本與植物原創小插畫",behavior:"主視覺沒有必要加無意義動畫；文字必須可選取與讀取",composition:"上方一張原創扁平插畫，下面置中主標題、副標題與黃色小徽章"},
+  C02: {subject:"食譜收藏分類",data:"分類「總覽／早餐／午餐／點心」；目前選中「早餐」",behavior:"點擊 Tab 切換實際內容區塊，鍵盤可操作，提供 aria-selected 和焦點狀態",composition:"橫向排列四個章節按鈕，以珊瑚粉圓角膠囊強調選取項"},
+  C03: {subject:"線上課程進度摘要",data:"卡片標頭「本週學習」；左欄「已完成 8 堂」；右欄「目標 12 堂」；底部「每週持續進步」",behavior:"內容必須響應不同數字長度；卡片本身不必假裝可點擊",composition:"深灰粗框大圓角票券；頂端藍色資訊條；左右對照，中間虛線"},
+  C04: {subject:"四週設計學習路徑",data:"W1 研究／W2 草圖／W3 原型／W4 測試，選中 W2",behavior:"點擊節點切換選中階段與對應內容，不只改變節點顏色；鍵盤焦點清晰",composition:"橫向連續線、等距圓形節點、下方文字標籤，選中項用珊瑚粉"},
+  C05: {subject:"每週閱讀進度",data:"Week 2；主題「讀完一本小書」；次要資訊「目標 80 頁」；左側小書本原創插畫",behavior:"文字長度增加時自動換行，手機不溢出",composition:"粉綠色大圓角卡；左側方形插畫槽；右側上小下大的資訊層級"},
+  C06: {subject:"每週學習時間軸",data:"09:00 閱讀筆記、10:30 練習題、13:00 製作小專案、15:30 進度回顧",behavior:"連續點線從第一個節點延伸至最後一個節點；長文字可換行；有連續事件與行內事件兩種呈現",composition:"左時間、中空心節點與連續點線、右活動卡；深灰 2–3px 描邊"},
+  C07: {subject:"今日任務卡",data:"「整理書架」與「完成閱讀筆記」兩筆活動",behavior:"若設計成按鈕需有 hover/focus/disabled；純展示時不需假裝可點擊",composition:"單行或雙行的白底粗框圓角膠囊活動卡"},
+  C08: {subject:"學習資源標籤",data:"「影片」粉藍、「練習」暖黃、「重點」粉綠",behavior:"視覺分類不可只靠色彩，文字仍需明確；內容過長時不可擠壞版面",composition:"多個小尺寸膠囊，深灰描邊，輕巧圖示可選"},
+  C09: {subject:"30 天閱讀挑戰提示",data:"「連續閱讀 7 天」",behavior:"數字變動時不造成版面劇烈位移，保持輕量提示",composition:"單一暖黃色粗框橢圓徽章，短字與數字並列"}
+};
+
+export function makeStyle001ComponentPrompt(
+  componentId: string,
+  mode: "frontend" | "visual" = "frontend"
+): string {
+  const component = STYLE001_COMPONENTS.find(c => c.id === componentId);
+  const content = COMPONENT_CONTENT_EXAMPLES[componentId];
+  if (!component || !content) return "找不到指定元件。";
+  const common = `STYLE-001 / ${component.id} — ${component.name}（${component.title}）
+
+設計任務：從參考截圖抽取「視覺語言」，以全新主題「${content.subject}」重新創作元件。不得沿用釜山旅遊文字、原作者插畫、標誌或原始截圖，也不要像素級複製。
+
+視覺規則：奶油白 #FBF9F1、深灰 #363233 描邊、低飽和粉彩（#E7A094、#A6CCDF、#B5D2A5、#F8D782、#EDE0ED）；2–3px 粗描邊、18–28px 大圓角、扁平原創小插畫、資訊層級清楚。以上為視覺推估，可依可讀性調整。
+
+元件結構：${component.anatomy}
+需要呈現的實例資料：${content.data}
+元件設計：${component.rule}
+排版構成：${content.composition}
+必要狀態：${component.states}
+可換內容：${component.flexible}
+互動行為：${content.behavior}
+限制：不要玻璃擬態、霓虹、過強陰影、3D 寫實與多餘裝飾。確保原創且適用其他專案。`;
+  if (mode === "visual") {
+    return `請繪製一張**單一 UI 元件設計圖**（不是完整網站），遵守以下規格，讓圖片可作為原創前端介面開發的視覺參考。版面清楚、物件完整置中、有留白；中文字優先清晰可讀，若繪圖模型無法準確顯示繁體中文，請將文字留空並提供排版佔位，不要輸出錯字。
+
+${common}
+請以 4:3 畫布、正面平視的乾淨 UI component showcase 呈現單一元件，不需要瀏覽器框、手機外框、浮水印或其他與元件無關元素。這是一個新作品，不是原網站截圖。`;
+  }
+  return `你是資深 Frontend Engineer 與 UI Designer。請根據以下規格，以 React + TypeScript + CSS 或 Tailwind 實作可重用、可運作的單一元件。
+
+${common}
+實作交付：
+1. 提供獨立元件及型別化 Props，不把示例文字寫死於樣式中。
+2. 示範以上新內容，包含必要狀態、事件處理與可操作互動。
+3. 有語意化 HTML、鍵盤焦點、手機排版與 reduced-motion 支援。
+4. 附最小使用範例與設計 token；描述如何替換成另一個主題。
+5. 檢查長中文、窄螢幕與可及性，並說明哪些細節只是參考截圖的合理推測。
+`;
+}
+
 export function makeStyle001Prompt(subject: string, context = "", variant?: PreviewVariant): string {
   const scenario = variant || PREVIEW_VARIANTS[0];
   const topic = subject.trim() || scenario.subject;
