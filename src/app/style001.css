@@ -32,3 +32,21 @@
 .s001-spec-panel .s001-spec-grid{padding:19px 24px 25px;gap:16px 25px}
 .s001-spec-panel .s001-spec-grid p{background:#f8faf7;border-radius:10px;padding:14px;font-size:12px;margin:0}
 @media(max-width:540px){.s001-spec-overlay{padding:12px}.s001-spec-panel{max-height:90dvh;border-radius:15px}.s001-spec-preview{margin:11px 15px 2px;padding:15px}.s001-spec-panel .s001-spec-grid{padding:14px 15px 20px}.s001-spec-panel .s001-spec-head{padding:15px}}
+
+/* Compact, optional browser-only screenshot action (replaces a lengthy explainer card). */
+.reference-quick-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:11px 0 24px}
+.reference-quick-actions .secondary-btn{padding:10px 13px;font-size:12px}
+.reference-quick-actions small{color:#829084;font-size:11px;line-height:1.7}
+.reference-quick-clear{border:0;background:none;color:#9c6558;text-decoration:underline;font-size:12px;padding:8px 3px}
+
+/* Every reusable component provides a frontend implementation prompt and a visual mockup prompt. */
+.s001-component-prompts{border-top:1px solid #e3e9e0;padding:19px 24px 25px}
+.s001-component-prompts>p{color:#708273;font-size:12px;line-height:1.7;margin:7px 0 13px}
+.s001-prompt-actions{display:flex;flex-wrap:wrap;gap:9px;margin:12px 0 16px}
+.s001-prompt-actions button{border:1px solid #26372c;background:#273c2f;color:#fff;font-size:12px;font-weight:700;border-radius:9px;display:flex;align-items:center;gap:8px;padding:11px 13px}
+.s001-prompt-actions button:last-child{background:#fbfaf7;color:#364d3d;border-color:#d7e1d4}
+.s001-prompt-actions button:hover{filter:brightness(.94)}
+.s001-prompt-detail{border-top:1px solid #edf0e9;padding:10px 0}
+.s001-prompt-detail summary{cursor:pointer;font-size:12px;font-weight:650;color:#495f4d;padding:5px 0}
+.s001-prompt-detail pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f8f9f4;border:1px solid #e4e9e0;border-radius:10px;padding:15px;color:#556558;font-size:11px;line-height:1.8;max-height:270px;overflow-y:auto;font-family:inherit}
+@media(max-width:540px){.s001-component-prompts{padding:18px 15px}.s001-prompt-actions{flex-direction:column}.s001-prompt-actions button{justify-content:center}.reference-quick-actions{align-items:start}.reference-quick-actions small{width:100%}}
