@@ -13,3 +13,12 @@
 @media(max-width:1180px){.ill-gallery{grid-template-columns:repeat(2,minmax(0,1fr))}.ill-detail-layout{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:720px){.ill-header{padding:31px 0 24px}.ill-header h1{font-size:51px}.ill-count{font-size:46px}.ill-gallery{grid-template-columns:1fr;gap:15px}.ill-dialog-grid{grid-template-columns:1fr;gap:0}.ill-detail-toolbar{align-items:flex-start;flex-direction:column}.ill-search{max-width:none;width:100%}.ill-tools{align-items:stretch}.ill-buttons{width:100%}.ill-btn,.ill-btn-primary{flex:1}.ill-dialog-backdrop{padding:12px}.ill-dialog{padding:18px}.ill-header{gap:14px}.ill-back{font-size:11px}}
 @media(prefers-reduced-motion:reduce){.ill-card{transition:none}}
+
+/* Gallery cards use lightweight thumbnails. Detail pages preserve original pixels and proportions. */
+.ill-detail-image-stage{background:#f5f4ee;display:flex;align-items:center;justify-content:center;padding:20px;min-height:260px;overflow:hidden}
+.ill-detail-image-stage .ill-preview-image{width:auto;max-width:100%;height:auto;aspect-ratio:auto;object-fit:contain;display:block}
+.ill-detail-image-stage.ill-native-small .ill-preview-image{max-width:min(100%,612px)}
+.ill-detail-image-stage .ill-preview-art{width:100%;height:auto;aspect-ratio:auto;object-fit:contain}
+.ill-original-link{color:#486b52;font-weight:700;text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+.ill-original-link:hover{color:#a06349}
+@media(max-width:720px){.ill-detail-image-stage{padding:8px;min-height:200px}.ill-preview-under{flex-wrap:wrap}}
