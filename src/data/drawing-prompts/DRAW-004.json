@@ -14,17 +14,17 @@
   ],
   "model": "未指定（原 Prompt 未提供）",
   "aspectRatio": "依來源圖片",
-  "notes": "使用者原文逐字保存，未提供負面提示詞、來源網址或指定模型。網站內為新創作的畫風示意；不是使用者提供的原始照片，也不是原始圖片的編輯成果。生成示例為咖啡桌與白色塗鴉，非來源照片。",
-  "imageDataUrl": "",
-  "preview": "white-doodle",
+  "notes": "使用者原文完整保存；未提供負面提示詞、來源網址或指定模型。預覽圖為本對話先前生成的白色手繪塗鴉效果，已壓縮成網站用縮圖並納入 GitHub。並非在使用者自己的照片上直接編輯。",
+  "imageDataUrl": "https://christinekao.github.io/frontend-design-library/assets/DRAW-004-example.webp",
+  "preview": "uploaded",
   "sourceUrl": "",
   "createdAt": "2026-10-24",
   "origin": "example",
-  "previewKind": "original-drawing",
+  "previewKind": "ai-generated-example",
   "visualNotes": "繪圖效果示意：暖色生活影像上疊白色不規則輪廓、蒸氣、星光、愛心及短篇手寫旁白。留白是核心規則。",
   "provenance": {
     "prompt": "user-verbatim",
-    "preview": "assistant-created-demo",
+    "preview": "assistant-generated",
     "sourceLink": "not-provided"
   }
 }
