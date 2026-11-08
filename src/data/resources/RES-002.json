@@ -1,0 +1,36 @@
+{
+  "id": "RES-002",
+  "title": "Put! by DezaLink",
+  "url": "https://put.dezalink.com/prompts",
+  "kind": "prompt-tool",
+  "kindLabel": "AI Banner Prompt／製作工具",
+  "subtitle": "商業視覺提示詞、線框圖與 AI Banner 製作",
+  "description": "提供 Banner 提示詞與 Wireframe 參考，也有可輸入文字、顏色的 AI Banner 產生器，適用縮圖、活動與促銷視覺。",
+  "features": [
+    "可瀏覽針對商業素材設計的 Prompt 與 Wireframe",
+    "提示詞資源標示可供商業用途，實際使用需依官方條款判斷",
+    "另有輸入文字與色彩的 Banner Generator",
+    "Generator 可能需要登入或付費，使用前確認方案與可用額度"
+  ],
+  "useCases": [
+    "AI Banner Prompt 結構研究",
+    "行銷縮圖與活動 Banner 生成",
+    "將設計概念轉為原創 Prompt"
+  ],
+  "tags": [
+    "AI Image",
+    "Prompt Library",
+    "Banner",
+    "Generator",
+    "Wireframe",
+    "Marketing",
+    "Japan"
+  ],
+  "reviewedAt": "2026-11-08",
+  "availability": "website-sections-observed-generator-terms-may-change",
+  "rightsNote": "官網對部分 Prompt 標示商用可用，但不代表所有模板、示範圖及生成結果都不受限制；須另確認服務條款、第三方素材授權與商標。不要直接將創作者作品當成 AI 的圖片輸入。",
+  "originalImagesSaved": false,
+  "sourceType": "user-submitted",
+  "relatedUrl": "https://put.dezalink.com/generator",
+  "displayCover": "prompt-studio"
+}
