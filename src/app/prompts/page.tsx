@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, BookImage, Check, Clipboard, Download, FilePlus2, ImagePlus, Layers3, Pencil, Search, Trash2, Upload, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, BookImage, Check, Clipboard, Download, FilePlus2, ImagePlus, Layers3, SwatchBook, Pencil, Search, Trash2, Upload, X } from "lucide-react";
 import { ILLUSTRATION_EXAMPLES, nextDrawingId, type IllustrationPromptEntry } from "@/data/illustration-prompts";
 import { IllustrationPreview } from "@/components/illustrations/IllustrationPreview";
 import "./prompt-library.css";
@@ -103,7 +103,7 @@ export default function IllustrationPromptPage() {
   return <div className="app-shell ill-shell">
     <aside className="sidebar">
       <Link className="brand" href="/" aria-label="回 Design Archive 首頁"><span className="brand-logo">D<span>.</span></span><span>DESIGN<br/>ARCHIVE</span></Link>
-      <div className="sidebar-group"><span className="sidebar-label">YOUR LIBRARY</span><Link href="/" className="side-link"><Layers3 size={18}/> 前端設計收藏</Link><Link href="/prompts/" className="side-link current" aria-current="page"><BookImage size={18}/> 繪圖 Prompt <span className="side-count">{personal.length}</span></Link></div>
+      <div className="sidebar-group"><span className="sidebar-label">YOUR LIBRARY</span><Link href="/" className="side-link"><Layers3 size={18}/> 前端設計收藏</Link><Link href="/prompts/" className="side-link current" aria-current="page"><BookImage size={18}/> 繪圖 Prompt <span className="side-count">{personal.length}</span></Link><Link href="/resources/" className="side-link"><SwatchBook size={18}/> 設計資源</Link></div>
       
     </aside>
     <main className="main-content ill-content">
