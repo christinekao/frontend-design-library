@@ -1,0 +1,35 @@
+{
+  "id": "RES-001",
+  "title": "BANNER LIBRARY",
+  "url": "https://design-library.jp/",
+  "kind": "inspiration",
+  "kindLabel": "Banner 設計靈感庫",
+  "subtitle": "真實廣告 Banner 的分類參考網站",
+  "description": "蒐集實際 Banner 作品，適合尋找視覺方向、排版組合、色彩、活動素材與社群廣告的靈感。",
+  "features": [
+    "依產業主題／廣告用途探索",
+    "依風格、色彩、橫直方或正方比例篩選",
+    "提供投放媒體分類（例如 Instagram、LINE、Facebook）",
+    "提供 Ranking 瀏覽入口"
+  ],
+  "useCases": [
+    "Banner 版型研究",
+    "配色與視覺層級拆解",
+    "行銷活動創意發想"
+  ],
+  "tags": [
+    "Banner",
+    "Gallery",
+    "Design Inspiration",
+    "Japan",
+    "Color",
+    "Layout",
+    "Advertising"
+  ],
+  "reviewedAt": "2026-11-08",
+  "availability": "official-site-observed",
+  "rightsNote": "作品由個別創作者或品牌持有權利。僅參考可抽象化的設計語言、資訊階層與版型；不要將他人的 Banner 圖片直接餵給生成式 AI，或直接重製、公開轉載。",
+  "originalImagesSaved": false,
+  "sourceType": "user-submitted",
+  "displayCover": "banner-gallery"
+}
