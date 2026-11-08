@@ -43,3 +43,7 @@ footer{border-top:1px solid var(--line);display:flex;align-items:center;justify-
 /* Prompt Library navigation is an active route rather than a home-page tab. */
 .mobile-tabs .mobile-prompt-link{white-space:nowrap;display:inline-flex;align-items:center;color:#718374;padding:13px 11px;font-size:12px;text-decoration:none;border-bottom:2px solid transparent}
 .mobile-tabs .mobile-prompt-link:hover{color:#263a2d;border-bottom-color:#b36e52}
+
+/* Scrollable mobile archive navigation for several independent libraries. */
+.mobile-tabs{overflow-x:auto;scrollbar-width:thin;scroll-behavior:smooth}
+.mobile-tabs .mobile-prompt-link{flex:none}
