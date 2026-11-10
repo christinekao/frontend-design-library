@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowLeft, ArrowUpRight, Archive, BookImage, Check, ExternalLink, Search, ShieldCheck, Sparkles, SwatchBook } from "lucide-react";
 import bannerLibrary from "@/data/resources/RES-001.json";
 import putTool from "@/data/resources/RES-002.json";
+import impeccable from "@/data/resources/RES-003.json";
 import "./resources.css";
 
 type ArchiveResource = {
@@ -25,16 +26,35 @@ type ArchiveResource = {
   sourceType: string;
   relatedUrl?: string;
   displayCover: string;
+  layers?: Array<{name: string; detail: string}>;
+  commands?: string[];
+  architecture?: { owner: string; role: string; independentFramework: boolean; adoptionStatus: string; principle: string };
+  snapshot?: {skill: string;cli: string;engine: string;detectorRules: number;commands: number;deprecatedCommands: string[];asOf: string;dynamic: string};
 };
 
-const resources: ArchiveResource[] = [bannerLibrary, putTool];
+const resources: ArchiveResource[] = [bannerLibrary, putTool, impeccable];
 const FILTERS = [
   { key: "all", title: "全部資源" },
   { key: "inspiration", title: "靈感圖庫" },
-  { key: "prompt-tool", title: "AI 製作與 Prompt" }
+  { key: "prompt-tool", title: "AI 製作與 Prompt" },
+  { key: "frontend-qa", title: "Frontend QA" }
 ];
 
 function ResourceCover({ resource }: { resource: ArchiveResource }) {
+  if (resource.kind === "frontend-qa") return (
+    <div className="res-cover res-cover-qa" aria-label="Impeccable：Build UI 經過 Detector、Runtime Review、UX Review，最後用 Evidence 驗收">
+      <div className="res-cover-top"><span>FRONTEND / QA</span><span>003</span></div>
+      <div className="res-qa-visual" aria-hidden="true">
+        <div className="res-qa-eyebrow">UI ACCEPTANCE CAPABILITY</div>
+        <div className="res-qa-flow">
+          <span>BUILD UI</span><b>↓</b><span className="res-qa-spotlight">DETECT <small>Impeccable</small></span>
+          <b>↓</b><span>RUNTIME + UX REVIEW</span><b>↓</b><span>RECHECK + EVIDENCE</span>
+        </div>
+        <p>Rule PASS ≠ UI PASS ≠ UX PASS</p>
+      </div>
+      <div className="res-cover-bottom">TOOL / PROVIDER <span>↗</span></div>
+    </div>
+  );
   if (resource.kind === "inspiration") return (
     <div className="res-cover res-cover-gallery" aria-hidden="true">
       <div className="res-cover-top"><span>VISUAL REFERENCES</span><span>001 / 002</span></div>
@@ -64,6 +84,11 @@ function ResourceCover({ resource }: { resource: ArchiveResource }) {
 export default function DesignResourcesPage() {
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("all");
+  const [copied, setCopied] = useState(false);
+  async function copyCommands(lines: string[]) {
+    try { await navigator.clipboard.writeText(lines.join("\n")); setCopied(true); window.setTimeout(() => setCopied(false), 2200); }
+    catch { setCopied(false); }
+  }
   const visible = useMemo(() => resources.filter(r =>
     (filter === "all" || r.kind === filter) &&
     (r.title + " " + r.description + " " + r.kindLabel + " " + r.tags.join(" ")).toLowerCase().includes(search.toLowerCase().trim())
@@ -83,7 +108,7 @@ export default function DesignResourcesPage() {
       <div className="topbar"><Link className="res-back" href="/"><ArrowLeft size={16}/> 返回收藏首頁</Link><span className="topbar-status"><span className="status-dot"/> GITHUB VERSIONED</span></div>
       <header className="res-heading">
         <span className="eyebrow">DESIGN ARCHIVE / CURATED RESOURCES</span>
-        <div className="res-headline"><div><h1>Find a reference.<br/><em>Make your own.</em></h1><p>設計靈感網站、製作工具與可重用 Prompt 資源。收藏來源與使用方式，而不是轉載創作者的作品。</p></div><div className="res-collection-count">{String(resources.length).padStart(2,"0")}<small>RESOURCES SAVED</small></div></div>
+        <div className="res-headline"><div><h1>Find a reference.<br/><em>Make your own.</em></h1><p>設計靈感、可重用 Prompt、前端品質檢查工具與開發工作流程。收藏來源，也保存如何正確使用。</p></div><div className="res-collection-count">{String(resources.length).padStart(2,"0")}<small>RESOURCES SAVED</small></div></div>
       </header>
       <section className="res-controls" aria-label="篩選設計資源">
         <label className="res-search"><Search size={17}/><input type="search" value={search} onChange={e=>setSearch(e.target.value)} placeholder="搜尋工具、主題或標籤" aria-label="搜尋設計資源"/></label>
@@ -99,13 +124,21 @@ export default function DesignResourcesPage() {
             <p className="res-description">{resource.description}</p>
             <div className="res-tags">{resource.tags.slice(0,6).map(tag=><span key={tag}>{tag}</span>)}</div>
             <div className="res-features"><strong>可以用來做什麼</strong><ul>{resource.features.map(feature=><li key={feature}><Check size={13}/>{feature}</li>)}</ul></div>
-            <div className="res-item-actions"><a href={resource.url} target="_blank" rel="noopener noreferrer" className="res-open">前往網站 <ArrowUpRight size={15}/></a>{resource.relatedUrl&&<a className="res-related" href={resource.relatedUrl} target="_blank" rel="noopener noreferrer">AI Banner Generator <ExternalLink size={13}/></a>}</div>
+            {resource.kind==="frontend-qa" && <div className="res-qa-detail">
+              <div className="res-qa-status">尚未在 Job-Ops／Shared Harness 安裝或執行</div>
+              <strong>建議的 UI Acceptance 四層</strong>
+              <ol>{resource.layers?.map(layer=><li key={layer.name}><b>{layer.name}</b><span>{layer.detail}</span></li>)}</ol>
+              {resource.architecture&&<p><b>架構定位：</b>{resource.architecture.owner}<br/>Impeccable = Tool／Provider，不是架構負責人。</p>}
+              {resource.commands&&<div className="res-cli"><div><strong>檢測 CLI</strong><button type="button" onClick={()=>void copyCommands(resource.commands!)}>{copied?"已複製":"複製指令"}</button></div><pre>{resource.commands.join("\n")}</pre></div>}
+              {resource.snapshot&&<small>版本快照（{resource.snapshot.asOf}）：Skill {resource.snapshot.skill}、{resource.snapshot.detectorRules} 條規則、{resource.snapshot.commands} 個指令。版本會變動，以官方為準。</small>}
+            </div>}
+            <div className="res-item-actions"><a href={resource.url} target="_blank" rel="noopener noreferrer" className="res-open">{resource.kind==="frontend-qa"?"前往官方 GitHub":"前往網站"} <ArrowUpRight size={15}/></a>{resource.relatedUrl&&<a className="res-related" href={resource.relatedUrl} target="_blank" rel="noopener noreferrer">{resource.kind==="frontend-qa"?"檢測器文件":"AI Banner Generator"} <ExternalLink size={13}/></a>}</div>
           </div>
           <div className="res-rights"><ShieldCheck size={17}/><span>{resource.rightsNote}</span></div>
         </article>)}
         {visible.length===0&&<div className="res-empty">找不到符合條件的資源。<button type="button" onClick={()=>{setSearch("");setFilter("all");}}>清除篩選</button></div>}
       </section>
-      <div className="res-usage-note"><ShieldCheck size={20}/><div><strong>收錄原則</strong><p>保留來源連結，研究排版、色彩及視覺層級；不下載或公開複製第三方 Banner 圖片，也不將創作者作品直接餵給 AI。若使用第三方 Prompt 或圖像作為商業素材，需先確認適用的條款與授權。</p></div></div>
+      <div className="res-usage-note"><ShieldCheck size={20}/><div><strong>收錄原則</strong><p>設計靈感與第三方素材需尊重原作授權；技術資源需區分「已收藏」、「已評估」與「已實際整合」。Impeccable 目前只是 Frontend QA 候選工具，尚未接入任何現有 Harness。</p></div></div>
       <footer>DESIGN ARCHIVE <span>RESOURCES / 網站與工具收藏 · GitHub JSON</span><span>2026</span></footer>
     </main>
   </div>;
