@@ -1,0 +1,104 @@
+{
+  "id": "RES-003",
+  "title": "Impeccable",
+  "url": "https://github.com/pbakaus/impeccable",
+  "kind": "frontend-qa",
+  "kindLabel": "AI 前端／Frontend QA",
+  "subtitle": "Deterministic Frontend QA＋AI Design Review / Repair",
+  "description": "一套給 coding agents 的設計詞彙、前端品質偵測工具與 UI 檢查指令。應視為 Shared Harness 中 UI Acceptance Capability 可選用的 Tool／Provider，而非另建一套 Framework。",
+  "features": [
+    "Detector 可直接掃描 source directory、HTML 或實際渲染的 URL；不需 LLM 或 API key",
+    "官方目前說明為 62 條 deterministic 規則：涵蓋 AI design anti-pattern、版面、字體、對比與可用性",
+    "AI Design Review／Repair 提供 critique、audit、polish、harden、layout、typeset、distill 等指令",
+    "可輸出 JSON 或 GitHub Actions annotations，用於 CI 與可追溯 findings",
+    "源碼掃描只會涵蓋部分 pattern 規則；contrast、實際行為等仍須用渲染頁面和真實互動驗證"
+  ],
+  "useCases": [
+    "Job-Ops 前端驗收前的 deterministic gate（建議，尚未實作）",
+    "Shared Harness 的 UI Acceptance Capability Tool／Provider 候選",
+    "前端與個人專案的品質檢查、Cold UI/UX Review 前置檢查"
+  ],
+  "tags": [
+    "Frontend QA",
+    "Deterministic",
+    "AI Design Review",
+    "Accessibility",
+    "Responsive",
+    "Harness",
+    "CLI",
+    "Agent Skill"
+  ],
+  "reviewedAt": "2026-11-10",
+  "availability": "github-official-main-and-releases-reviewed",
+  "rightsNote": "僅收藏與整理工具用途，不代表已在本專案、Job-Ops 或 Shared Harness 安裝／執行 Impeccable。Deterministic scan PASS 不等於 UI/UX 驗收通過；必須檢查真實畫面與互動。",
+  "originalImagesSaved": false,
+  "sourceType": "user-supplied-notes-verified-against-official",
+  "displayCover": "frontend-qa-pipeline",
+  "relatedUrl": "https://impeccable.style/docs/detector",
+  "snapshot": {
+    "skill": "4.8.2",
+    "cli": "4.8.2",
+    "engine": "0.1.22",
+    "detectorRules": 62,
+    "commands": 24,
+    "deprecatedCommands": [
+      "craft"
+    ],
+    "asOf": "2026-11-10",
+    "dynamic": "版本和規則數會隨發布更動，請以官方為準"
+  },
+  "layers": [
+    {
+      "name": "Frontend Rules",
+      "detail": "Impeccable deterministic detector、設計系統違規與機器可判定的 anti-pattern"
+    },
+    {
+      "name": "Runtime Inspection",
+      "detail": "真實 Browser、響應式版面、鍵盤操作、溢位和互動路徑"
+    },
+    {
+      "name": "AI UX Review",
+      "detail": "Cold UI/UX Review、資訊層級、認知負荷、persona 與可用性"
+    },
+    {
+      "name": "Acceptance Evidence",
+      "detail": "Findings → Repair → Recheck → Screenshot／測試證據 → PASS/FAIL"
+    }
+  ],
+  "workflow": [
+    "Build UI",
+    "Deterministic QA",
+    "Runtime UI Inspection",
+    "Cold UI/UX Review",
+    "Findings",
+    "Repair",
+    "Recheck",
+    "Acceptance Evidence"
+  ],
+  "architecture": {
+    "owner": "ONE Coordinator → UI Acceptance Capability",
+    "role": "Tool／Provider, not architecture owner",
+    "independentFramework": false,
+    "adoptionStatus": "reference-only; not installed",
+    "principle": "Rule PASS ≠ UI PASS ≠ Product UX PASS"
+  },
+  "commands": [
+    "npx impeccable detect src/",
+    "npx impeccable detect https://your-site.example",
+    "npx impeccable detect --json src/",
+    "npx impeccable detect --github src/",
+    "npx impeccable detect --list-rules"
+  ],
+  "commandNotes": [
+    "URL 掃描需要本機安裝 Chrome、Chromium 或 Edge；來源目錄掃描無法涵蓋所有需實際渲染才能檢查的規則。",
+    "npx impeccable install 是選用的 skill／hook 安裝，不應在尚未評估前自動加到 Shared Harness。",
+    "AI review 不等於 deterministic PASS，仍需交叉核對發現與畫面。",
+    "最新 official 指令數 24；craft 是 deprecated alias，不應作為新流程標準。"
+  ],
+  "refs": [
+    "https://github.com/pbakaus/impeccable",
+    "https://github.com/pbakaus/impeccable/releases",
+    "https://impeccable.style/docs/detector",
+    "https://impeccable.style/docs/hooks"
+  ]
+}
