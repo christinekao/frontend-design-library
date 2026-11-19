@@ -1,0 +1,59 @@
+{
+  "id": "DRAW-006",
+  "title": "奇幻植物園・超現實時尚肖像",
+  "description": "將高級時裝攝影和扁平手繪圖形融合，置身巨型花朵、蘑菇、異想生物與雕塑感植物之間的超現實時尚視覺。",
+  "prompt": "Surreal fashion portrait featuring [HUMAN] with [ANIMAL] in a strange botanical garden. Center the human full-body or three-quarter, posed calmly among oversized flowers, giant mushrooms, sculptural plants, and one enormous whimsical [CREATURE] form entering the composition from the upper corner. Combine polished fashion photography with flat hand-drawn graphic elements, bold black outlines, simplified shapes, matte painted surfaces, and playful scale distortion. Dress the subject in [CLOTHES]. Use a controlled palette of [COLORS] against a clean pastel sky. Dreamlike, graphic, uncanny, elegant, playful. Add the small signature “prompt by @p2nda”. 4:5",
+  "promptType": "template",
+  "templateVariables": [
+    {
+      "key": "HUMAN",
+      "description": "人物／主角"
+    },
+    {
+      "key": "ANIMAL",
+      "description": "陪伴動物"
+    },
+    {
+      "key": "CREATURE",
+      "description": "從畫面上角進入構圖的巨型奇幻生物"
+    },
+    {
+      "key": "CLOTHES",
+      "description": "服裝"
+    },
+    {
+      "key": "COLORS",
+      "description": "配色方案"
+    }
+  ],
+  "negativePrompt": "",
+  "tags": [
+    "Surreal",
+    "Fashion",
+    "Portrait",
+    "Botanical",
+    "Hybrid Media",
+    "Bold Outline",
+    "Playful Scale",
+    "Template"
+  ],
+  "model": "未指定（範例由 ChatGPT 圖像生成工具產生）",
+  "aspectRatio": "4:5",
+  "notes": "保留使用者提供的原始英文模板與全部五個占位符。範例圖是先前在本對話中依此模板自行填入視覺設定生成的示意，不是固定模板唯一結果。畫面為身穿薄荷綠結構式上衣和粉紅裙裝的人物、白色鳥類、巨型變色龍與異想植物；不是原始提示詞中指定的具體人物或動物。原提示詞含簽名字樣「prompt by @p2nda」，已原樣保留，不宣稱為使用者自創。",
+  "imageDataUrl": "https://christinekao.github.io/frontend-design-library/assets/DRAW-006-example.webp",
+  "imageFullUrl": "https://christinekao.github.io/frontend-design-library/assets/DRAW-006-highres.webp",
+  "imageOriginalDimensions": "1122 × 1402",
+  "previewQualityNote": "收藏列表使用 540 × 675 的圖片縮圖；詳情頁使用同解析度 1122 × 1402 的高品質 WebP，不拉伸低解析度縮圖。",
+  "preview": "uploaded",
+  "sourceUrl": "",
+  "createdAt": "2026-11-19",
+  "origin": "example",
+  "previewKind": "ai-generated-example",
+  "provenance": {
+    "prompt": "user-provided-template-verbatim",
+    "originalPromptAttribution": "@p2nda (included in prompt, not independently verified)",
+    "preview": "assistant-generated-in-current-chat",
+    "imagePurpose": "example-only; placeholders remain unfilled in source template",
+    "sourceLink": "not-provided"
+  }
+}
